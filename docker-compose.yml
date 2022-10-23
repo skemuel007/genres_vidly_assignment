@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  vidlyapi:
+    container_name: vidlyapi
+    image: skemuel007/vidlyapi
+    restart: always
+    build: .
+    ports:
+      - 5003:5003
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_PORT=27017
+      - MONGO_PASSWORD=123456
+      - MONGO_USER=root
+      - MONGO_DATABASE=vidly
+      - NODE_ENV=production
+      - APP_PORT=4002
+      - MONGO_HOST=mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123456
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+  
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - 5002:8081
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=123456
+      - ME_CONFIG_MONGODB_URL=mongodb://root:123456@mongodb:27017
+
+
+volumes:
+  mongodb_data_container:
