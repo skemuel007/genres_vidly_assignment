@@ -7,7 +7,7 @@ services:
     restart: always
     build: .
     ports:
-      - 5003:5003
+      - 5003:3001
     links:
       - mongodb
     depends_on:
@@ -18,7 +18,7 @@ services:
       - MONGO_USER=root
       - MONGO_DATABASE=vidly
       - NODE_ENV=production
-      - APP_PORT=4002
+      - PORT=3001
       - MONGO_HOST=mongodb
 
   mongodb:

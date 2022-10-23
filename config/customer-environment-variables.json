@@ -1,9 +1,0 @@
-{
-    "MONGO_DB": {
-        "PORT": "MONGO_PORT",
-        "PASSWORD": "MONGO_PASSWORD",
-        "USER": "MONGO_USER",
-        "HOST": "MONGO_HOST",
-        "DATABASE": "MONGO_DATABASE"
-    }
-}

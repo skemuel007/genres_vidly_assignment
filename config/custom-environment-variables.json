@@ -1,0 +1,9 @@
+{
+    "MONGO_DB": {
+        "PORT": 27017,
+        "PASSWORD": "123456",
+        "USER": "root",
+        "HOST": "localhost",
+        "DATABASE": "vidly"
+    }
+}
