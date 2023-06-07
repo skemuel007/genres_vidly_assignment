@@ -52,6 +52,6 @@ app.use('/', homeRoute);
 app.use('/api/genres', genresRoute);
 app.use('/api/customers', customersRoute);
 
-const port = process.env.PORT || config.get('PORT');
+const port = process.env.PORT || 3000 // config.get('PORT');
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
